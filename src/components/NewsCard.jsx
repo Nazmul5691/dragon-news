@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
 
 
 const NewsCard = ({singleNews}) => {
 
-    const {title} = singleNews;
+    const {title, _id} = singleNews;
     return (
-        <div>
-            <h1>single news:{title}</h1>
+        <div className="py-4">
+            <Link  to={`/news/${_id}`}>single news:{title}</Link>
         </div>
     );
 };
