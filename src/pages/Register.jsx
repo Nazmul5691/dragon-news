@@ -1,12 +1,16 @@
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUser ,user} = useContext(AuthContext);
+    const [error, setError] = useState({})
+    const navigate = useNavigate()
+    // const [users , setUser ] = useState()
+
 
     const handleRegister = (e) => {
 
@@ -21,11 +25,27 @@ const Register = () => {
 
         console.log(name, photo, email, password);
 
+        if (name.length < 5) {
+            setError({ ...error, name: "name should be at least 5 character or more" })
+            return;
+        }
+
         createUser(email, password)
-            .then(result =>{
+            .then(result => {
                 console.log(result);
+                alert('user successfully signin')
+                // setUser(user)
+                
+                updateUser({ displayName: name, photoURL: photo })
+                    .then(() => {
+                        // alert('update successfully')
+                        navigate('/')
+                    })
+                    .catch(error => {
+                        console.log(error.message);
+                    })
             })
-            .catch(error =>{
+            .catch(error => {
                 console.log(error.message);
             })
 
@@ -43,6 +63,9 @@ const Register = () => {
                             <fieldset className="fieldset">
                                 <label className="fieldset-label">Name</label>
                                 <input type="text" name="name" className="input" placeholder="name" />
+                                {
+                                    error && <p>{error.name}</p>
+                                }
                                 <label className="fieldset-label">PhotoURL</label>
                                 <input type="text" name="photo" className="input" placeholder="photoURL" />
                                 <label className="fieldset-label">Email</label>
