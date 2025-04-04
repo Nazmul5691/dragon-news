@@ -34,12 +34,13 @@ const AuthProvider = ({children}) => {
             if(currentUser){
                 console.log('last sign in user',currentUser);
                 setUser(currentUser)
-                setLoading(false)
+                // setLoading(false)
             }
             else{
                 console.log('no user log in');
                 setUser(null)
             }
+            setLoading(false);
         })
 
         return () =>{
