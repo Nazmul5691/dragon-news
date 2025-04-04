@@ -1,14 +1,12 @@
 
 import { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 
 const Login = () => {
 
     const {logInUser} = useContext(AuthContext)
-    const location = useLocation();
-    const navigate = useNavigate();
+   
     
 
     const handleLogin = (e) =>{
@@ -25,11 +23,9 @@ const Login = () => {
             console.log(result);
             alert('user successfully login')
 
-            // const redirectTo = location.state?.from?.pathname || '/'
-            // const redirectTo = location.state?.from?.pathname || '/';
-
-            // navigate(redirectTo)
-            navigate(location?.state ? location.state : "/")
+            
+           
+            
             
            
         })
