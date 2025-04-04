@@ -8,17 +8,23 @@ export const AuthContext = createContext();
 const AuthProvider = ({children}) => {
 
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
 
     const createUser = (email, password) =>{
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
+        
     }
 
     const logOutUser = () =>{
+        setLoading(true)
         return signOut(auth)
+        
     }
 
     const logInUser = (email, password) =>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
@@ -28,6 +34,7 @@ const AuthProvider = ({children}) => {
             if(currentUser){
                 console.log('last sign in user',currentUser);
                 setUser(currentUser)
+                setLoading(false)
             }
             else{
                 console.log('no user log in');
@@ -46,6 +53,7 @@ const AuthProvider = ({children}) => {
         user,
         logOutUser,
         logInUser,
+        loading,
     }
 
     return (
