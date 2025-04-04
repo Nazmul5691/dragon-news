@@ -15,7 +15,7 @@ const Register = () => {
     const handleRegister = (e) => {
 
         e.preventDefault();
-        console.log('register coming soon');
+        // console.log('register coming soon');
 
         const form = new FormData(e.target)
         const name = form.get("name")
@@ -23,7 +23,7 @@ const Register = () => {
         const email = form.get("email")
         const password = form.get("password")
 
-        console.log(name, photo, email, password);
+        // console.log(name, photo, email, password);
 
         if (name.length < 5) {
             setError({ ...error, name: "name should be at least 5 character or more" })
@@ -32,7 +32,7 @@ const Register = () => {
 
         createUser(email, password)
             .then(result => {
-                console.log(result);
+                // console.log(result);
                 alert('user successfully signin')
                 // setUser(user)
                 
@@ -42,11 +42,11 @@ const Register = () => {
                         navigate('/')
                     })
                     .catch(error => {
-                        console.log(error.message);
+                        // console.log(error.message);
                     })
             })
             .catch(error => {
-                console.log(error.message);
+                // console.log(error.message);
             })
 
     }

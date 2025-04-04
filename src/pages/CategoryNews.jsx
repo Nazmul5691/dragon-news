@@ -5,7 +5,7 @@ import NewsCard from "../components/NewsCard";
 const CategoryNews = () => {
 
     const {data:news} = useLoaderData()
-    console.log(news);
+    // console.log(news);
     return (
         <div className="px-5">
             <h1>{news.length} news found on this category</h1>

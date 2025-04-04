@@ -19,16 +19,16 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(email, password);
+        // console.log(email, password);
 
         logInUser(email, password)
         .then(result =>{
-            console.log(result);
+            // console.log(result);
             alert('user successfully login')
             navigate(location?.state ? location?.state : '/')
         })
         .catch(err =>{
-            console.log(err);
+            // console.log(err);
             setError(err.message);
         })
    }
